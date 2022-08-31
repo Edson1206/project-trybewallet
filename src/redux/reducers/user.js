@@ -1,8 +1,8 @@
+import { SAVE_EMAIL } from '../actions';
+
 const INICIAL_STATE = {
   email: '',
 };
-
-const SAVE_EMAIL = 'SAVE_EMAIL';
 
 const userReducer = (state = INICIAL_STATE, action) => {
   switch (action.type) {
