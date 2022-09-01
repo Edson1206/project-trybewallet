@@ -1,5 +1,11 @@
-import { VALUE_WALLET,
-  CURRENCY_WALLET, CURRENCIES_WALLET, ERROR_API, EXPENSES_WALLET } from '../actions';
+import {
+  VALUE_WALLET,
+  CURRENCY_WALLET,
+  CURRENCIES_WALLET,
+  ERROR_API,
+  EXPENSES_WALLET,
+  DELETE_EXPENSE,
+} from '../actions';
 
 const INITIAL_STATE = {
   wallet: 0,
@@ -38,6 +44,11 @@ function walletreducer(state = INITIAL_STATE, action) {
     return {
       ...state,
       expenses: [...state.expenses, action.expenses],
+    };
+  case DELETE_EXPENSE:
+    return {
+      ...state,
+      expenses: state.expenses.filter((element) => element.id !== action.payload),
     };
   default:
     return state;

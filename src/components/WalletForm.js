@@ -39,7 +39,6 @@ class WalletForm extends Component {
       method: 'Dinheiro',
       tag: 'Alimentação',
     });
-    console.log(newExpense);
   };
 
   render() {

@@ -6,6 +6,7 @@ export const CURRENCY_WALLET = 'CURRENCY_WALLET';
 export const CURRENCIES_WALLET = 'CURRENCIES_WALLET';
 export const ERROR_API = 'ERROR_API';
 export const EXPENSES_WALLET = 'EXPENSES_WALLET';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 export const saveEmail = (email) => ({
   type: SAVE_EMAIL,
@@ -59,3 +60,8 @@ export const addExpenses = (expenses) => async (dispatch) => {
     dispatch(getErrorAPI(error));
   }
 };
+
+export const deleteExpense = (id) => ({
+  type: DELETE_EXPENSE,
+  payload: id,
+});
