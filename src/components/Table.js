@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FiDelete } from 'react-icons/fi';
-import { deleteExpense } from '../redux/actions';
+import { FiDelete, FiEdit } from 'react-icons/fi';
+import { deleteExpense,
+  // editExpense
+} from '../redux/actions';
 
 class Table extends Component {
   render() {
-    const { expenses, clickDelete } = this.props;
+    const { expenses,
+      clickDelete,
+      // clickEdit,
+    } = this.props;
     const header = ['Descrição', 'Tag', 'Método de pagamento', 'Valor', 'Moeda',
       'Câmbio utilizado', 'Valor convertido', 'Moeda de conversão', 'Editar/Excluir'];
     return (
@@ -36,11 +41,19 @@ class Table extends Component {
                 <td>
                   <button
                     type="button"
+                    data-testid="edit-btn"
+                    // onClick={ () => clickEdit(id) }
+                  >
+                    <FiEdit size={ 25 } className="edit-icon" />
+                  </button>
+                  <button
+                    type="button"
                     data-testid="delete-btn"
                     onClick={ () => clickDelete(id) }
                   >
                     <FiDelete size={ 25 } />
                   </button>
+
                 </td>
               </tr>
             )))}
@@ -56,11 +69,13 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   clickDelete: (id) => dispatch(deleteExpense(id)),
+  // clickEdit: (id) => dispatch(editExpense(id)),
 });
 
 Table.propTypes = {
   expenses: PropTypes.arrayOf.isRequired,
   clickDelete: PropTypes.func.isRequired,
+  // clickEdit: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

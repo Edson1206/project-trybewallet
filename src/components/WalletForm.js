@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addExpenses, getAPIThunk } from '../redux/actions';
+import { addExpenses,
+  // editExpense,
+  getAPIThunk } from '../redux/actions';
 
 class WalletForm extends Component {
   constructor() {
@@ -43,7 +45,7 @@ class WalletForm extends Component {
 
   render() {
     const { value, description, currency, method, tag } = this.state;
-    const { currencies } = this.props;
+    const { currencies, editor } = this.props;
     return (
       <form>
         <label htmlFor="valueInput">
@@ -121,7 +123,7 @@ class WalletForm extends Component {
           type="button"
           onClick={ this.addExpenseButton }
         >
-          Adicionar despesa
+          { editor ? 'Editar despesa' : 'Adicionar Despesa' }
         </button>
       </form>
     );
@@ -131,11 +133,14 @@ class WalletForm extends Component {
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
   expenses: state.wallet.expenses,
+  // editor: state.wallet.editor,
+  // idToEdit: state.wallet.idToEdit,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getCurrencies: () => dispatch(getAPIThunk()),
   addExpense: (expense) => dispatch(addExpenses(expense)),
+  // edit: (expense) => dispatch(editExpense(expense)),
 });
 
 WalletForm.propTypes = {

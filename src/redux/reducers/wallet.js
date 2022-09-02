@@ -5,6 +5,8 @@ import {
   ERROR_API,
   EXPENSES_WALLET,
   DELETE_EXPENSE,
+  // EDIT_EXPENSE,
+  // ID_TO_EDIT_EXPENSE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -50,6 +52,20 @@ function walletreducer(state = INITIAL_STATE, action) {
       ...state,
       expenses: state.expenses.filter((element) => element.id !== action.payload),
     };
+  // case ID_TO_EDIT_EXPENSE:
+  //   return {
+  //     ...state,
+  //     idToEdit: action.id,
+  //     editor: true,
+  //   };
+  // case EDIT_EXPENSE:
+  //   return {
+  //     ...state,
+  //     editor: false,
+  //     expenses: state.expenses
+  //       .map((element) => (
+  //         element.id === state.idToEdit ? action.expenses : { ...element })),
+  //   };
   default:
     return state;
   }

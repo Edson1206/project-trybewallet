@@ -7,6 +7,8 @@ export const CURRENCIES_WALLET = 'CURRENCIES_WALLET';
 export const ERROR_API = 'ERROR_API';
 export const EXPENSES_WALLET = 'EXPENSES_WALLET';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const ID_TO_EDIT_EXPENSE = 'ID_TO_EDIT_EXPENSE';
 
 export const saveEmail = (email) => ({
   type: SAVE_EMAIL,
@@ -65,3 +67,13 @@ export const deleteExpense = (id) => ({
   type: DELETE_EXPENSE,
   payload: id,
 });
+
+// export const editExpense = (expense) => ({
+//   type: EDIT_EXPENSE,
+//   expense,
+// });
+
+// export const edit = (id) => ({
+//   type: ID_TO_EDIT_EXPENSE,
+//   id,
+// });
